@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartKurikulum Center - SMK Negeri 1 Maluku Tengah</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-blue: #1A73E8;
+            --primary-green: #34A853;
+            --bg-light: #f4f6f9;
+            --text-dark: #333;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --card-hover: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 1. Header */
+        header {
+            background: #fff;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .header-text p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* 2. Hero Section */
+        .hero {
+            background: linear-gradient(90deg, #1A73E8, #34A853);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary-blue);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            background: #f1f1f1;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        /* 3. Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: -30px auto 40px; /* Pull up into hero slightly */
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        /* 4. Dashboard Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .section-title {
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+            font-size: 1.4rem;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grid-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border-top: 5px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Specific Colors for Categories */
+        /* Category A: Blue */
+        .cat-a .section-title { border-color: #1A73E8; color: #1A73E8; }
+        .card.type-a { border-color: #1A73E8; }
+        .card.type-a .card-icon { color: #1A73E8; }
+
+        /* Category B: Green */
+        .cat-b .section-title { border-color: #34A853; color: #34A853; }
+        .card.type-b { border-color: #34A853; }
+        .card.type-b .card-icon { color: #34A853; }
+
+        /* Category C: Yellow/Orange */
+        .cat-c .section-title { border-color: #fbbc04; color: #fbbc04; }
+        .card.type-c { border-color: #fbbc04; }
+        .card.type-c .card-icon { color: #fbbc04; }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #34A853;
+            text-decoration: none;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .grid-wrapper {
+                grid-template-columns: 1fr; /* 1 Column on Mobile */
+            }
+
+            .header-text h1 { font-size: 1.2rem; }
+            .hero h2 { font-size: 1.8rem; }
+            
+            .logo-img { height: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://iili.io/fBlmXdN.png" alt="Logo SMK" class="logo-img">
+            <div class="header-text">
+                <h1>SmartKurikulum Center</h1>
+                <p>Portal Informasi Guru SMK Negeri 1 Maluku Tengah</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>Akses Cepat Seluruh Informasi<br>Kurikulum di Satu Tempat</h2>
+        <a href="#menu-area" class="btn-cta">Mulai Sekarang</a>
+    </section>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-box" placeholder="🔍  Cari menu (contoh: Absensi, Nilai)..." onkeyup="filterMenu()">
+    </div>
+
+    <main class="container" id="menu-area">
+
+        <div class="category-group cat-a">
+            <h3 class="section-title"><i class="fas fa-folder-open"></i> A. Administrasi Kurikulum</h3>
+            <div class="grid-wrapper">
+                
+                <a href="https://docs.google.com/document/d/1q5PnpaQOPq04Pi44hCa_vD2kewklRx8N/edit?usp=sharing&ouid=109617087844226844570&rtpof=true&sd=true" target="_blank" class="card type-a">
+                    <i class="fas fa-file-invoice card-icon"></i>
+                    <div class="card-title">Rencana Kerja Jangka Menengah</div>
+                    <div class="card-desc">Dokumen perencanaan strategis sekolah jangka menengah.</div>
+                </a>
+
+                <a href="https://docs.google.com/document/d/15mBAtdmtpNIgLSD3c3YG7oiAxdieLiyL/edit?usp=sharing&ouid=109617087844226844570&rtpof=true&sd=true" target="_blank" class="card type-a">
+                    <i class="fas fa-book card-icon"></i>
+                    <div class="card-title">Kurikulum Satuan Pendidikan</div>
+                    <div class="card-desc">Dokumen KSP SMK Negeri 1 Maluku Tengah.</div>
+                </a>
+
+                <a href="https://smkn1malteng.my.canva.site/bs8mcv8majfq0n7r" target="_blank" class="card type-a">
+                    <i class="fas fa-clipboard-check card-icon"></i>
+                    <div class="card-title">Absensi Mapel Bahasa Inggris</div>
+                    <div class="card-desc">Link presensi kehadiran siswa khusus mapel Bahasa Inggris.</div>
+                </a>
+
+                <a href="https://alexbahy34-code.github.io/kalender-pendidikan/" target="_blank" class="card type-a">
+                    <i class="fas fa-calendar-alt card-icon"></i>
+                    <div class="card-title">Kalender Pendidikan 2025/2026</div>
+                    <div class="card-desc">Jadwal kegiatan akademik selama satu tahun ajaran.</div>
+                </a>
+
+                <a href="https://smkn1malteng.my.canva.site/jam-mengajar-smk-negeri-1-maluku-tengah-2025-2026" target="_blank" class="card type-a">
+                    <i class="fas fa-hourglass-half card-icon"></i>
+                    <div class="card-title">Pembagian Jam Pelajaran</div>
+                    <div class="card-desc">Distribusi beban mengajar guru per semester.</div>
+                </a>
+
+                <a href="https://smkn1malteng.my.canva.site/copy-of-ui-jadwal-interaktif-smkn-1-maluku-tengah-2025-2026" target="_blank" class="card type-a">
+                    <i class="fas fa-clock card-icon"></i>
+                    <div class="card-title">Jadwal Pembelajaran</div>
+                    <div class="card-desc">Jadwal masuk kelas interaktif.</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-group cat-b">
+            <h3 class="section-title"><i class="fas fa-chalkboard-teacher"></i> B. Guru & Kelas</h3>
+            <div class="grid-wrapper">
+                
+                <a href="https://smkn1malteng.my.canva.site/dagwxsv7pai" target="_blank" class="card type-b">
+                    <i class="fas fa-users card-icon"></i>
+                    <div class="card-title">Data Guru Wali</div>
+                    <div class="card-desc">Informasi lengkap mengenai wali kelas.</div>
+                </a>
+
+                <a href="https://smkn1malteng.my.canva.site/dagwxrsiwr8" target="_blank" class="card type-b">
+                    <i class="fas fa-list-check card-icon"></i>
+                    <div class="card-title">Tupoksi Guru Wali</div>
+                    <div class="card-desc">Tugas pokok dan fungsi wali kelas.</div>
+                </a>
+
+                <a href="https://smkn1malteng.my.canva.site/dagztogsf-q" target="_blank" class="card type-b">
+                    <i class="fas fa-mobile-alt card-icon"></i>
+                    <div class="card-title">Aplikasi Guru Wali</div>
+                    <div class="card-desc">Tools bantu administrasi kelas.</div>
+                </a>
+
+                <a href="https://alexbahy34-code.github.io/perangkat-online-SMK/" target="_blank" class="card type-b">
+                    <i class="fas fa-laptop-code card-icon"></i>
+                    <div class="card-title">Perangkat Pembelajaran Online</div>
+                    <div class="card-desc">Akses modul ajar dan materi digital.</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-group cat-c">
+            <h3 class="section-title"><i class="fas fa-star"></i> C. Penilaian & Pelaporan</h3>
+            <div class="grid-wrapper">
+                
+                <a href="https://sites.google.com/view/daftar-nilai-smkn1/home" target="_blank" class="card type-c">
+                    <i class="fas fa-table card-icon"></i>
+                    <div class="card-title">Daftar Nilai Semester Ganjil</div>
+                    <div class="card-desc">Rekapitulasi nilai siswa semester berjalan.</div>
+                </a>
+
+                <a href="https://script.google.com/macros/s/AKfycbw4vDCff5BTE2DurxfF1dwKF7JeMTzHKFNWrp9S_jgrcl7ZSqYPnKoBpwnLkQsVMJX7/exec" target="_blank" class="card type-c">
+                    <i class="fas fa-chart-pie card-icon"></i>
+                    <div class="card-title">Dashboard Laporan Penginputan</div>
+                    <div class="card-desc">Monitor progress input nilai guru.</div>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SmartKurikulum Center.</p>
+        <p>Dikelola oleh Wakasek Kurikulum SMK Negeri 1 Maluku Tengah</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #aaa;">Versi 1.1</p>
+    </footer>
+
+    <script>
+        function filterMenu() {
+            // Get input value
+            let input = document.getElementById('searchInput');
+            let filter = input.value.toUpperCase();
+            
+            // Get all cards
+            let cards = document.getElementsByClassName('card');
+            
+            // Loop through all cards and hide those that don't match the search
+            for (let i = 0; i < cards.length; i++) {
+                let titleDiv = cards[i].getElementsByClassName('card-title')[0];
+                let txtValue = titleDiv.textContent || titleDiv.innerText;
+                
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
